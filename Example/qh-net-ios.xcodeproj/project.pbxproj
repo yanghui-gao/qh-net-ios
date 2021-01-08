@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16C5B7AEA031C97D512A346E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		16C5B7AEA031C97D512A346E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1AB8C4DD019C9B91BB15D944 /* Pods-qh-net-ios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qh-net-ios_Example.debug.xcconfig"; path = "Target Support Files/Pods-qh-net-ios_Example/Pods-qh-net-ios_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		527E03363C1E82D5B7B0D328 /* Pods_qh_net_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qh_net_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* qh-net-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "qh-net-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,11 +42,11 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7730DB0364CDE4C31C38EF9B /* Pods_qh_net_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qh_net_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C67C03F06045C8EE4C5945D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		7C67C03F06045C8EE4C5945D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9B0C3CD1F8F68A1553B0A339 /* Pods-qh-net-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qh-net-ios_Tests.debug.xcconfig"; path = "Target Support Files/Pods-qh-net-ios_Tests/Pods-qh-net-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C9BC1C34E1F110069F599FC /* Pods-qh-net-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qh-net-ios_Example.release.xcconfig"; path = "Target Support Files/Pods-qh-net-ios_Example/Pods-qh-net-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BEB50C5A18B479F9FE285701 /* Pods-qh-net-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qh-net-ios_Tests.release.xcconfig"; path = "Target Support Files/Pods-qh-net-ios_Tests/Pods-qh-net-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E798D85BAEE7F3FA4A1E6C09 /* qh-net-ios.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = "qh-net-ios.podspec"; path = "../qh-net-ios.podspec"; sourceTree = "<group>"; };
+		E798D85BAEE7F3FA4A1E6C09 /* qh-net-ios.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "qh-net-ios.podspec"; path = "../qh-net-ios.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,6 @@
 				9B0C3CD1F8F68A1553B0A339 /* Pods-qh-net-ios_Tests.debug.xcconfig */,
 				BEB50C5A18B479F9FE285701 /* Pods-qh-net-ios_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

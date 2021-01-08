@@ -1,0 +1,16 @@
+PODS:
+  - qh-net-ios (0.1.0)
+
+DEPENDENCIES:
+  - qh-net-ios (from `../`)
+
+EXTERNAL SOURCES:
+  qh-net-ios:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  qh-net-ios: 1f5f60549dfbe4ac278012644a323822b575dca8
+
+PODFILE CHECKSUM: 9a4af64c6a41a5d15d9a4188d35aebb6119878bb
+
+COCOAPODS: 1.9.3
