@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'qh-net-ios_Example' do
+  pod 'qh-net-ios', :path => '../'
+
+  target 'qh-net-ios_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
