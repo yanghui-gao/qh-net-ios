@@ -16,7 +16,15 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "11.0"
   },
-  "source_files": "qh-net-ios/Classes/**/*"
+  "source_files": "qh-net-ios/Classes/**/*",
+  "dependencies": {
+    "SwiftyJSON": [
+      "4.3.0"
+    ],
+    "Moya/RxSwift": [
+      "14.0.0"
+    ]
+  }
 }
