@@ -1,4 +1,4 @@
-framework module qh_net_ios {
+module qh_net_ios {
   umbrella header "qh-net-ios-umbrella.h"
 
   export *

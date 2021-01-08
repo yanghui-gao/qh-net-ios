@@ -1,16 +1,37 @@
 PODS:
-  - qh-net-ios (0.1.0)
+  - Alamofire (5.4.1)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - qh-net-ios (0.1.0):
+    - Moya/RxSwift (= 14.0.0)
+    - SwiftyJSON (= 4.3.0)
+  - RxSwift (5.1.1)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - qh-net-ios (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Moya
+    - RxSwift
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
   qh-net-ios:
     :path: "../"
 
 SPEC CHECKSUMS:
-  qh-net-ios: 1f5f60549dfbe4ac278012644a323822b575dca8
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  qh-net-ios: dd1ab11cdc407d484d8092a2fd86306a449407ea
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 9a4af64c6a41a5d15d9a4188d35aebb6119878bb
+PODFILE CHECKSUM: 2fe396ebe1a13278826401b84d8f414bd91b87a3
 
 COCOAPODS: 1.9.3
