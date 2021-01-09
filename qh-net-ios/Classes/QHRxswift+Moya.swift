@@ -19,7 +19,7 @@ let errorMsg = "请求失败, 请稍后重试"
 
 private let disposeBag = DisposeBag()
 
-public extension Reactive where Base: MoyaProviderType{
+public extension Reactive where Base: MoyaProviderType {
     
     /**
      拓展将请求序列化
@@ -42,32 +42,32 @@ public extension Reactive where Base: MoyaProviderType{
         }
     }
 }
-public extension PrimitiveSequence where Trait == SingleTrait, Element == Result<Response, QHErrorModel>{
+public extension PrimitiveSequence where Trait == SingleTrait, Element == Result<Response, QHErrorModel> {
     /**
      * 只有在返回结果是 {"ok": true} 时使用 不做任何操作 只关心成功失败时
      */
-    func mapBool() -> Single<Result<Bool, QHErrorModel>>{
-        return flatMap{result in
-            switch result{
+    func mapBool() -> Single<Result<Bool, QHErrorModel>> {
+        return flatMap {result in
+            switch result {
             case .success(let response):
                 do {
                     let json = try JSON(data: response.data)
                     let errorModel = QHErrorModel(fromJson: json)
-                    if errorModel.isEffective(){
+                    if errorModel.isEffective() {
                         return Single.just(.failure(errorModel))
                     }
                     guard let jsonObjecet = json.dictionaryObject else {
-                        return Single.just(.failure(.init(errCode: 400, zhMessage:
-                            errorMsg)))
+                        return Single.just(.failure(.init(zhMessage:
+                                                            errorMsg, errCode: 400)))
                     }
-                    guard let isok = jsonObjecet["ok"] as? Bool else{
-                        return Single.just(.failure(.init(errCode: 400, zhMessage:
-                        errorMsg)))
+                    guard let isok = jsonObjecet["ok"] as? Bool else {
+                        return Single.just(.failure(.init(zhMessage:
+                                                            errorMsg, errCode: 400)))
                     }
                     return Single.just(.success(isok))
                 } catch {
-                    return Single.just(.failure(.init(errCode: 400, zhMessage:
-                    errorMsg)))
+                    return Single.just(.failure(.init(zhMessage:
+                                                        errorMsg, errCode: 400)))
                 }
             case .failure(let QHErrorModel):
                 return Single.just(.failure(QHErrorModel))
@@ -77,23 +77,23 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Result
     /**
      * 不转换
      */
-    func mapSwiftJSON() -> Single<Result<JSON, QHErrorModel>>{
-        return flatMap{ result in
-            switch result{
+    func mapSwiftJSON() -> Single<Result<JSON, QHErrorModel>> {
+        return flatMap { result in
+            switch result {
             case .failure(let errorModel):
                 return Single.just(.failure(errorModel))
             case .success(let response):
-                do{
+                do {
                     let json = try JSON(data: response.data)
                     
                     let errorModel = QHErrorModel(fromJson: json)
                     
-                    if errorModel.isEffective(){
+                    if errorModel.isEffective() {
                         return Single.just(.failure(errorModel))
                     }
                     return Single.just(.success(json))
                 } catch {
-                    return Single.just(.failure(QHErrorModel(errCode: 400, zhMessage: errorMsg)))
+                    return Single.just(.failure(QHErrorModel(zhMessage: errorMsg, errCode: 400)))
                 }
             }
             
@@ -102,22 +102,22 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Result
     /**
      * 讲JSON转换成对象
      */
-    func mapObject<T:QHModelProtocol>(objectType: T.Type) -> Single<Result<T, QHErrorModel>>{
+    func mapObject<T: QHModelProtocol>(objectType: T.Type) -> Single<Result<T, QHErrorModel>> {
         
-        return flatMap{result in
-            switch result{
+        return flatMap { result in
+            switch result {
             case .success(let response):
                 do {
                     let json = try JSON(data: response.data)
                     let object = T(fromJson: json)
                     let errorModel = QHErrorModel(fromJson: json)
                     
-                    if errorModel.isEffective(){
+                    if errorModel.isEffective() {
                         return Single.just(.failure(errorModel))
                     }
                     return Single.just(.success(object))
                 } catch {
-                    return Single.just(.failure(QHErrorModel(errCode: 400, zhMessage: errorMsg)))
+                    return Single.just(.failure(QHErrorModel(zhMessage: errorMsg, errCode: 400)))
                 }
             case .failure(let QHErrorModel):
                 return Single.just(.failure(QHErrorModel))
@@ -128,8 +128,8 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Result
     /**
      * 讲JSON转换成数组
      */
-    func mapArray<T:QHModelProtocol>(dataType: T.Type) -> Single<Result<[T], QHErrorModel>>{
-        return flatMap{result in
+    func mapArray<T: QHModelProtocol>(dataType: T.Type) -> Single<Result<[T], QHErrorModel>> {
+        return flatMap { result in
             switch result {
             case .success(let response):
                 do {
@@ -137,21 +137,21 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Result
                     
                     let errorModel = QHErrorModel(fromJson: json)
                     
-                    if errorModel.isEffective(){
+                    if errorModel.isEffective() {
                         return Single.just(.failure(errorModel))
                     }
                     
                     guard let data = json.dictionary?["data"] else {
-                        return Single.just(.failure(QHErrorModel(errCode: 400, zhMessage: errorMsg)))
+                        return Single.just(.failure(QHErrorModel(zhMessage: errorMsg, errCode: 400)))
                     }
                     guard let jsonArray = data.array else {
-                        return Single.just(.failure(QHErrorModel(errCode: 400, zhMessage: errorMsg)))
+                        return Single.just(.failure(QHErrorModel(zhMessage: errorMsg, errCode: 400)))
                     }
                     
-                    let array = jsonArray.compactMap{T(fromJson: $0)}
+                    let array = jsonArray.compactMap { T(fromJson: $0) }
                     return Single.just(.success(array))
                 } catch {
-                    return Single.just(.failure(QHErrorModel(errCode: 400, zhMessage: errorMsg)))
+                    return Single.just(.failure(QHErrorModel(zhMessage: errorMsg, errCode: 400)))
                 }
             case .failure(let QHErrorModel):
                 return Single.just(.failure(QHErrorModel))

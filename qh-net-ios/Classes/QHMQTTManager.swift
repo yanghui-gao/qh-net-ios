@@ -9,7 +9,7 @@ import Foundation
 import MQTTClient
 
 /// 代理协议
-public protocol QHMQTTManagerDelegate {
+public protocol QHMQTTManagerDelegate: class {
     /// 连接状态已经改变
     func sessionManager(_ sessionManager: MQTTSessionManager!, didChange newState: MQTTSessionManagerState)
     /// 回调消息
@@ -25,7 +25,7 @@ public class QHMQTTManager: NSObject {
     private let QHMQTTSessionManager = MQTTSessionManager()
     
     /// 链接代理
-    public var delegate:QHMQTTManagerDelegate?
+    public weak var delegate: QHMQTTManagerDelegate?
     
     /// 是否链接成功
     public var isConnect: Bool {
@@ -36,7 +36,7 @@ public class QHMQTTManager: NSObject {
             return false
         }
     }
-
+    /// function_parameter_count
     /// 链接MQTT
     public func connect(
         to host: String?,

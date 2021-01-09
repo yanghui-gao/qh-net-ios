@@ -9,6 +9,7 @@
 import UIKit
 import qh_net_ios
 import RxSwift
+import Reachability
 
 class ViewController: UIViewController {
 
@@ -16,13 +17,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let reachability = QHReachability.manager
+        var reachability = QHReachability.manager
+        reachability.delegate = self
         reachability.startNotifier()
         print(reachability.currentReachabilityStatus ?? "")
-        
-        reachability.reachabilityObservable.subscribe(onNext: { res in
-            print(res.connection.description)
-        }).disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,4 +29,12 @@ class ViewController: UIViewController {
     }
 
 }
-
+extension ViewController: QHReachabilityDelegate {
+    func whenReachable(reachability: Reachability) {
+        print(reachability.connection.description)
+    }
+    
+    func whenUnreachable(reachability: Reachability) {
+        print(reachability.connection.description)
+    }
+}

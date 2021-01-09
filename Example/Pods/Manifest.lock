@@ -20,10 +20,12 @@ PODS:
     - SwiftyJSON (= 4.3.0)
   - ReachabilitySwift (5.0.0)
   - RxSwift (5.1.1)
+  - SwiftLint (0.41.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - qh-net-ios (from `../`)
+  - SwiftLint (~> 0.41.0)
 
 SPEC REPOS:
   trunk:
@@ -32,6 +34,7 @@ SPEC REPOS:
     - MQTTClient
     - ReachabilitySwift
     - RxSwift
+    - SwiftLint
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -45,8 +48,9 @@ SPEC CHECKSUMS:
   qh-net-ios: 30216feaf30906b69f0dc1af8adb0c0b974de67f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 2fe396ebe1a13278826401b84d8f414bd91b87a3
+PODFILE CHECKSUM: 7a9f93c88c7b1a46cefe297d1c85f35497594f64
 
 COCOAPODS: 1.9.3

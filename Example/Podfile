@@ -7,5 +7,6 @@ source 'https://cdn.cocoapods.org/'
 target 'qh-net-ios_Example' do
   use_modular_headers!
   pod 'qh-net-ios', :path => '../'
-
+  #代码规范
+  pod 'SwiftLint', '~> 0.41.0'
 end
