@@ -41,4 +41,6 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'SwiftyJSON', '4.3.0'
   s.dependency 'Moya/RxSwift', '14.0.0'
+  s.dependency 'MQTTClient', '0.15.3'
+  s.dependency 'ReachabilitySwift', '5.0.0'
 end

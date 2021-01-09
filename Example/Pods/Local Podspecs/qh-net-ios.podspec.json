@@ -25,6 +25,12 @@
     ],
     "Moya/RxSwift": [
       "14.0.0"
+    ],
+    "MQTTClient": [
+      "0.15.3"
+    ],
+    "ReachabilitySwift": [
+      "5.0.0"
     ]
   }
 }
