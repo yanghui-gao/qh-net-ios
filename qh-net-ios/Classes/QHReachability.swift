@@ -29,29 +29,13 @@ public struct QHReachability {
     public let reachabilityObservable = PublishSubject<Reachability>()
     
     /// 网络管理类
-    private var reachability: Reachability? {
-        do {
-            return try Reachability()
-        } catch {
-            print("Unable to create Reachability")
-            return nil
-        }
-    }
+    private var reachability: Reachability?
     /// 网络状态 汉字
     public var currentReachabilityStatus: String?{
         guard let reachability = self.reachability else {
             return nil
         }
-        switch reachability.connection {
-        case .cellular:
-            return "蜂窝数据"
-        case .unavailable:
-            return "无网络链接"
-        case .wifi:
-            return "Wifi"
-        default:
-            return "未知网络状态"
-        }
+        return self.currentReachabilityStatus(reachability: reachability)
     }
     /// 当前网络类型: Reachability.Connection
     public var connection: Reachability.Connection? {
@@ -60,19 +44,54 @@ public struct QHReachability {
         }
         return reachability.connection
     }
+    private init() {
+        do {
+            self.reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+    }
+    
+    /// 返回汉字的网络状态
+    public func currentReachabilityStatus(reachability: Reachability) -> String {
+        switch reachability.connection {
+        case .cellular:
+            return "蜂窝数据"
+        case .unavailable:
+            return "无网络链接"
+        case .wifi:
+            return "wifi"
+        default:
+            return "未知网络状态"
+        }
+    }
     /// 开始订阅
     public func startNotifier() {
-        guard let reachability = self.reachability, let delegate = self.delegate else {
+        guard let reachability = self.reachability else {
             return
         }
+        /// RxSwift形式
         do {
             try reachability.startNotifier()
             reachability.whenReachable = { reachability in
                 reachabilityObservable.onNext(reachability)
-                delegate.whenReachable(reachability: reachability)
             }
             reachability.whenUnreachable = { reachability in
                 reachabilityObservable.onNext(reachability)
+            }
+        } catch {
+            print("Unable to start notifier")
+        }
+        guard let delegate = self.delegate else {
+            return
+        }
+        /// 代理形式
+        do {
+            try reachability.startNotifier()
+            reachability.whenReachable = { reachability in
+                delegate.whenReachable(reachability: reachability)
+            }
+            reachability.whenUnreachable = { reachability in
                 delegate.whenUnreachable(reachability: reachability)
             }
         } catch {
