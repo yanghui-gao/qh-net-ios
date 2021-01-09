@@ -16,7 +16,9 @@ PODS:
   - qh-net-ios (0.1.0):
     - Moya/RxSwift (= 14.0.0)
     - MQTTClient (= 0.15.3)
+    - ReachabilitySwift (= 5.0.0)
     - SwiftyJSON (= 4.3.0)
+  - ReachabilitySwift (5.0.0)
   - RxSwift (5.1.1)
   - SwiftyJSON (4.3.0)
 
@@ -28,6 +30,7 @@ SPEC REPOS:
     - Alamofire
     - Moya
     - MQTTClient
+    - ReachabilitySwift
     - RxSwift
     - SwiftyJSON
 
@@ -39,7 +42,8 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
-  qh-net-ios: dbec377a77cd5f9a575fe95ffaa4a121cfc39439
+  qh-net-ios: 30216feaf30906b69f0dc1af8adb0c0b974de67f
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
